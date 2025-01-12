@@ -1,0 +1,22 @@
+<odoo>
+    <record id="view_product_template_kanban_with_add" model="ir.ui.view">
+        <field name="name">product.template.kanban.with.add</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//t[@t-name='kanban-box']//div[@class='oe_kanban_details']" position="inside">
+                <!--  Add button-->
+                <div class="mt-2">
+                    <button type="object"
+                            name="action_add_product_to_owner_line"
+                            string="Add"
+                            class="btn btn-primary btn-sm"
+                            t-if="'default_owner_id' in context"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
+
