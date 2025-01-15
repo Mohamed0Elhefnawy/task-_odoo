@@ -5,13 +5,29 @@
         <field name="inherit_id" ref="product.product_template_kanban_view"/>
         <field name="arch" type="xml">
             <xpath expr="//t[@t-name='kanban-box']//div[@class='oe_kanban_details']" position="inside">
-                <!--  Add button-->
-                <div class="mt-2">
+
+                <div class="o_add_remove_buttons mt-2">
+
                     <button type="object"
                             name="action_add_product_to_owner_line"
                             string="Add"
-                            class="btn btn-primary btn-sm"
-                            t-if="'default_owner_id' in context"/>
+                            icon="fa-solid fa-cart-shopping"
+                            class="btn btn-secondary btn-sm o_add_button"
+                            t-if="'default_owner_id' in context"
+                    />
+
+                    <!-- Quantity Box -->
+                    <div class="o_quantity_box d-flex align-items-center">
+                        <button type="object" class="btn btn-sm btn-light o_decrease_button" name="decrease_quantity">-</button>
+                        <field name="quantity" widget="integer_button" class="mx-2 o_field_widget o_input"/>
+                        <button type="object" class="btn btn-sm btn-light o_increase_button" name="increase_quantity">+</button>
+                    </div>
+
+                    <button type="object"
+                            name="action_remove_product_from_owner_line"
+                            string="Remove"
+                            class="btn btn-danger btn-sm o_remove_button"
+                    />
                 </div>
             </xpath>
         </field>

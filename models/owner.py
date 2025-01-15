@@ -28,7 +28,7 @@ class Owner(models.Model):
         return {
             'type': 'ir.actions.act_window',
             'name': 'Select Products',
-            'view_mode': 'kanban',
+            'view_mode': 'kanban,form',
             'res_model': 'product.template',
             'target': 'current',
             'context': {
