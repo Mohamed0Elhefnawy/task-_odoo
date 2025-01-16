@@ -43,7 +43,7 @@ class OwnerLine(models.Model):
 
     owner_id = fields.Many2one('owner', required=True, ondelete='cascade')
     product_id = fields.Many2one('product.template', string="Product", required=True)
-    quantity = fields.Float(string="Quantity", default=1.0)
+    quantity = fields.Integer(string="Quantity")
     price_unit = fields.Float(string="Unit Price", related="product_id.list_price", readonly=False)
     subtotal = fields.Float(string="Subtotal", compute="_compute_subtotal", store=True)
 

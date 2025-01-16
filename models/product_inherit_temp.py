@@ -5,7 +5,7 @@ from odoo.exceptions import UserError
 class ProductProduct(models.Model):
     _inherit = 'product.template'
 
-    quantity = fields.Float(string="Quantity", default=1.0, widget="integer_button")
+    quantity = fields.Integer(string="Quantity", widget="integer_button")
 
     def action_add_product_to_owner_line(self):
 
