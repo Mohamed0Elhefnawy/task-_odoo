@@ -1,0 +1,56 @@
+<odoo>
+    <record id="view_product_template_kanban_owner" model="ir.ui.view">
+        <field name="name">product.template.kanban.owner</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <kanban>
+                 <div name="button_box" class="oe_button_box">
+                    <button type="object" class="btn btn-secondary"
+                            name="action_back_to_owner">
+                        <i class="fa fa-arrow-left"/> Back to Owner
+                    </button>
+                </div>
+                <templates>
+                    <t t-name="kanban-box" >
+                        <div class="o_kanban_record" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px; margin-bottom: 15px; background-color: #f9f9f9; display: flex; flex-direction: row; align-items: center; width: 500px; height: 150px;" >
+                            <div class="o_kanban_image" style="flex: 0 0 120px; padding-right: 15px; text-align: center;">
+                               <img t-att-src="kanban_image('product.product', 'image_1920', record.id.raw_value)"
+                                     alt="Product"
+                                    style="width: 100px; height: 100px; object-fit: contain; border-radius: 4px;"
+                                    class="img-thumbnail"/>
+                            </div>
+                            <div class="o_kanban_details" style="flex: 1; text-align: left; padding-left: 10px;" >
+                                <strong><field name="name"/></strong>
+                                <div><field name="default_code"/></div>
+                                <div>Unit Price: <field name="lst_price"/></div>
+                                <div>On Hand: <field name="qty_available"/></div>
+                                <div>
+                                    <button type="object" class="btn btn-sm btn-primary"
+                                            t-att-data-id="record.id"
+                                            name="action_add_product_to_owner_line">
+                                        <i class="fa fa-plus"/> Add
+                                    </button>
+                                    <button type="object" class="btn btn-sm btn-danger"
+                                            t-att-data-id="record.id"
+                                            name="action_remove_product_from_owner_line">
+                                        <i class="fa fa-trash"/> Remove
+                                    </button>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="input-group">
+                                        <button type="object" class="btn btn-secondary"
+                                                 name="decrease_quantity">-</button>
+                                        <input type="text" class="form-control text-center" readonly="1"
+                                               t-att-value="record.quantity" widget="integer_button"/>
+                                        <button type="object" class="btn btn-secondary"
+                                                 name="increase_quantity">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>
